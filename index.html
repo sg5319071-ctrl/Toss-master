@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Toss Expert™ - Official</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0b0e14;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .card {
+            background: #111622;
+            border: 1px solid #1e2638;
+            border-radius: 24px;
+            padding: 24px 18px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+        }
+
+        .timer-badge {
+            border: 1px solid #ff4d4d;
+            color: #ff4d4d;
+            background: rgba(255, 77, 77, 0.1);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .dot-red {
+            width: 8px;
+            height: 8px;
+            background-color: #ff4d4d;
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.3; }
+        }
+
+        .logo-container {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+            border: 3px solid #f3ba2f;
+            padding: 3px;
+            background: #111622;
+            box-shadow: 0 0 15px rgba(243, 186, 47, 0.3);
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            font-weight: 800;
+            color: #f3ba2f;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #171f30;
+            border-radius: 12px;
+            padding: 12px 6px;
+            margin-bottom: 16px;
+            border: 1px solid #232d42;
+        }
+
+        .stat-item h2 {
+            font-size: 18px;
+            color: #f3ba2f;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 9px;
+            color: #8fa0b8;
+            font-weight: 700;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .status-box {
+            background: rgba(0, 200, 83, 0.08);
+            border: 1px solid rgba(0, 200, 83, 0.3);
+            color: #00e676;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .features-list {
+            background: #171f30;
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: left;
+            margin-bottom: 20px;
+            border: 1px solid #232d42;
+        }
+
+        .feature-item {
+            font-size: 13px;
+            color: #d1d8e0;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .joining-text {
+            font-size: 12px;
+            color: #00e676;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .dot-green {
+            width: 8px;
+            height: 8px;
+            background-color: #00e676;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .btn-join {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(180deg, #00e676 0%, #00a843 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 800;
+            padding: 16px;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(0, 230, 118, 0.4);
+            letter-spacing: 0.5px;
+        }
+
+        .footer-note {
+            font-size: 11px;
+            color: #62728d;
+            margin-top: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="timer-badge">
+            <span class="dot-red"></span> NEXT TOSS TIP IN: <span id="timer">03:44</span>
+        </div>
+
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo">
+        </div>
+
+        <h1>IPL TOSS EXPERT™</h1>
+        <div class="subtitle">NO.1 OFFICIAL PREDICTION CHANNEL</div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h2>28.5K+</h2>
+                <p>MEMBERS</p>
+            </div>
+            <div class="stat-item">
+                <h2>99.2%</h2>
+                <p>ACCURACY</p>
+            </div>
+            <div class="stat-item">
+                <h2>100%</h2>
+                <p>FREE TIPS</p>
+            </div>
+        </div>
+
+        <div class="status-box">
+            ✔ Today's Toss: Passed 🟢 | ⚡ 100% Accuracy Today
+        </div>
+
+        <div class="features-list">
+            <div class="feature-item">👑 IPL & International Toss Predictions</div>
+            <div class="feature-item">📈 Session & Match Winner Analysis</div>
+            <div class="feature-item">⚡ Instant Post-Toss Live Updates</div>
+        </div>
+
+        <div class="joining-text">
+            <span class="dot-green"></span> 1,420 users joining right now...
+        </div>
+
+        <a href="https://t.me/+DjliRcB8FPc3OWJl" class="btn-join" target="_blank">
+            ✈ JOIN TELEGRAM CHANNEL
+        </a>
+
+        <div class="footer-note">
+            Click above button to join official channel.
+        </div>
+    </div>
+
+    <script>
+        let time = 224;
+        const timerElement = document.getElementById('timer');
+        setInterval(() => {
+            let minutes = Math.floor(time / 60);
+            let seconds = time % 60;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            timerElement.innerHTML = `${minutes}:${seconds}`;
+            if (time > 0) time--;
+        }, 1000);
+    </script>
+
+</body>
+</html>
+
