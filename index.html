@@ -20,6 +20,8 @@
             align-items: center;
             min-height: 100vh;
             padding: 15px;
+            position: relative;
+            overflow-x: hidden;
         }
 
         .card {
@@ -31,6 +33,7 @@
             width: 100%;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            margin-bottom: 40px;
         }
 
         /* Animated Red Badge */
@@ -217,6 +220,42 @@
             color: #62728d;
             margin-top: 14px;
         }
+
+        /* Live Join Popup Notification Style */
+        .join-popup {
+            position: fixed;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #17212b;
+            border: 1px solid #0088cc;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            transition: bottom 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+            z-index: 999;
+            white-space: nowrap;
+        }
+
+        .join-popup.show {
+            bottom: 20px;
+            opacity: 1;
+        }
+
+        .popup-blue-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #0088cc;
+            border-radius: 50%;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
@@ -271,8 +310,14 @@
         </div>
     </div>
 
+    <!-- Live Join Notification Box -->
+    <div id="popup" class="join-popup">
+        <span class="popup-blue-dot"></span>
+        <span id="popup-text">Suresh R. just joined the channel!</span>
+    </div>
+
     <script>
-        // Real-time Countdown Timer (3:39 se shuru hota hai)
+        // Real-time Countdown Timer
         let time = 219;
         const timerElement = document.getElementById('timer');
         setInterval(() => {
@@ -291,6 +336,30 @@
             count += Math.floor(Math.random() * 3) + 1;
             countElement.innerHTML = count.toLocaleString();
         }, 2500);
+
+        // Live Join Pop-up Notification Script
+        const names = [
+            "Suresh R.", "Aman Verma", "Rahul Sharma", "Vikram Singh", 
+            "Rajesh K.", "Rohit Patel", "Deepak Kumar", "Karan Mehta", 
+            "Aniket S.", "Manish Gupta", "Pankaj Yadav", "Sachin D."
+        ];
+
+        const popup = document.getElementById('popup');
+        const popupText = document.getElementById('popup-text');
+
+        function triggerPopup() {
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            popupText.innerHTML = `<b>${randomName}</b> just joined the channel!`;
+            popup.classList.add('show');
+
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 2500);
+        }
+
+        // Pop-up har 4 second me trigger hoga
+        setInterval(triggerPopup, 4500);
+        setTimeout(triggerPopup, 1000); // Pehla pop-up 1 sec baad aayega
     </script>
 
 </body>
