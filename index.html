@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPL Toss Expert™ - Official</title>
+    <title>TOSS MASTER - Official</title>
     <style>
         * {
             margin: 0;
@@ -33,6 +33,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
         }
 
+        /* Animated Red Badge */
         .timer-badge {
             border: 1px solid #ff4d4d;
             color: #ff4d4d;
@@ -46,6 +47,7 @@
             gap: 8px;
             margin-bottom: 20px;
             letter-spacing: 0.5px;
+            box-shadow: 0 0 10px rgba(255, 77, 77, 0.2);
         }
 
         .dot-red {
@@ -54,13 +56,15 @@
             background-color: #ff4d4d;
             border-radius: 50%;
             display: inline-block;
-            animation: blink 1s infinite;
+            animation: blinkRed 1s infinite alternate;
         }
 
-        @keyframes blink {
-            50% { opacity: 0.3; }
+        @keyframes blinkRed {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
         }
 
+        /* Glowing Logo Container */
         .logo-container {
             width: 110px;
             height: 110px;
@@ -69,7 +73,13 @@
             border: 3px solid #f3ba2f;
             padding: 3px;
             background: #111622;
-            box-shadow: 0 0 15px rgba(243, 186, 47, 0.3);
+            box-shadow: 0 0 20px rgba(243, 186, 47, 0.4);
+            animation: logoGlow 2s infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% { box-shadow: 0 0 10px rgba(243, 186, 47, 0.3); }
+            100% { box-shadow: 0 0 25px rgba(243, 186, 47, 0.7); }
         }
 
         .logo-container img {
@@ -80,7 +90,7 @@
         }
 
         h1 {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.5px;
@@ -170,8 +180,15 @@
             background-color: #00e676;
             border-radius: 50%;
             display: inline-block;
+            animation: blinkGreen 0.8s infinite alternate;
         }
 
+        @keyframes blinkGreen {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Pulsing Glow Join Button */
         .btn-join {
             display: flex;
             align-items: center;
@@ -186,6 +203,13 @@
             border-radius: 30px;
             box-shadow: 0 0 20px rgba(0, 230, 118, 0.4);
             letter-spacing: 0.5px;
+            animation: pulseBtn 1.5s infinite;
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 230, 118, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 0 30px rgba(0, 230, 118, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 15px rgba(0, 230, 118, 0.4); }
         }
 
         .footer-note {
@@ -199,14 +223,14 @@
 
     <div class="card">
         <div class="timer-badge">
-            <span class="dot-red"></span> NEXT TOSS TIP IN: <span id="timer">03:44</span>
+            <span class="dot-red"></span> NEXT TOSS TIP IN: <span id="timer">03:39</span>
         </div>
 
         <div class="logo-container">
             <img src="logo.png" alt="Logo">
         </div>
 
-        <h1>IPL TOSS EXPERT™</h1>
+        <h1>TOSS MASTER™</h1>
         <div class="subtitle">NO.1 OFFICIAL PREDICTION CHANNEL</div>
 
         <div class="stats-grid">
@@ -235,7 +259,7 @@
         </div>
 
         <div class="joining-text">
-            <span class="dot-green"></span> 1,420 users joining right now...
+            <span class="dot-green"></span> <span id="user-count">1,422</span> users joining right now...
         </div>
 
         <a href="https://t.me/+DjliRcB8FPc3OWJl" class="btn-join" target="_blank">
@@ -248,7 +272,8 @@
     </div>
 
     <script>
-        let time = 224;
+        // Real-time Countdown Timer (3:39 se shuru hota hai)
+        let time = 219;
         const timerElement = document.getElementById('timer');
         setInterval(() => {
             let minutes = Math.floor(time / 60);
@@ -258,8 +283,15 @@
             timerElement.innerHTML = `${minutes}:${seconds}`;
             if (time > 0) time--;
         }, 1000);
+
+        // Dynamic Users Joining Counter Animation
+        let count = 1422;
+        const countElement = document.getElementById('user-count');
+        setInterval(() => {
+            count += Math.floor(Math.random() * 3) + 1;
+            countElement.innerHTML = count.toLocaleString();
+        }, 2500);
     </script>
 
 </body>
 </html>
-
